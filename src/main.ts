@@ -1,5 +1,22 @@
-import {initHabit,renderHabits} from "./ui/habbit.ts";
+import "./style/main.css";
+
+import { getDates } from "./services/dateService";
+import { renderCalendar } from "./ui/calendarUI";
+import { renderGrid } from "./ui/grid";
+import { initHabit, renderHabits } from "./ui/habbit";
+
+const dates=getDates(20);
+
+function renderAll(){
+  renderHabits();
+
+  renderCalendar(dates);
+
+  renderGrid(dates);
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
   initHabit();
-  renderHabits();
+
+  renderAll();
 });

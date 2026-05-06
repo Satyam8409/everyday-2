@@ -1,30 +1,41 @@
 import { getHabits } from "../services/habbitService";
-import { isCompleted, toggleLog } from "../services/logService";
+import {
+  isCompleted,
+  isSkipped,
+  toggleLog
+} from "../services/logService";
+
 import { gridContainer } from "../utils/elements";
 
 export function renderGrid(dates:string[]){
+
   if(!gridContainer) return;
 
-  const container = gridContainer;
+  const container=gridContainer;
 
-  container.innerHTML = "";
+  container.innerHTML="";
 
-  const habits = getHabits();
+  const habits=getHabits();
 
-  habits.forEach(habit => {
+  habits.forEach(habit=>{
 
-    const row = document.createElement("div");
+    const row=document.createElement("div");
 
-    row.className = "grid-row";
+    row.className="grid-row";
 
-    dates.forEach(date => {
+    dates.forEach(date=>{
 
-      const cell = document.createElement("div");
+      const cell=document.createElement("div");
 
-      cell.className = "grid-cell";
+      cell.className="grid-cell";
 
       if(isCompleted(habit.id,date)){
         cell.classList.add("done");
+      }
+
+      if(isSkipped(habit.id,date)){
+        cell.classList.add("skip");
+        cell.textContent="SKIP";
       }
 
       cell.addEventListener("click",()=>{

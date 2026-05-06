@@ -8,6 +8,8 @@ const calendarRow=document.querySelector<HTMLDivElement>("#calendar-row");
 
 const gridContainer=document.querySelector<HTMLDivElement>("#grid-container");
 const trackerDivBottom=document.querySelector<HTMLDivElement>(".tracker-div-bottom");
+const countRow=document.querySelector<HTMLDivElement>("#count-row");
+
 
 
 export{
@@ -16,5 +18,6 @@ export{
   habitList,
   calendarRow,
   gridContainer,
-  trackerDivBottom
+  trackerDivBottom,
+  countRow,
 };

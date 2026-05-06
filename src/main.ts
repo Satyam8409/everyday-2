@@ -1,22 +1,28 @@
 import "./style/main.css";
 
 import { getDates } from "./services/dateService";
+
 import { renderCalendar } from "./ui/calendarUI";
 import { renderGrid } from "./ui/grid";
-import { initHabit, renderHabits } from "./ui/habbit";
+import { renderHabits, initHabit } from "./ui/habbit";
+import { renderCount } from "./ui/countUI";
 
-const dates=getDates(20);
+const dates=getDates(30);
 
 function renderAll(){
-  renderHabits();
 
   renderCalendar(dates);
 
+  renderHabits(renderAll);
+
   renderGrid(dates);
+
+  renderCount(dates);
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
-  initHabit();
+
+  initHabit(renderAll);
 
   renderAll();
 });

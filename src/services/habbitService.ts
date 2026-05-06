@@ -1,4 +1,4 @@
-import type { Habit } from "../models/habbitModel";
+import type { Habit } from "../models/habbitModel.ts";
 import { getData, saveData } from "./storageService";
 
 export function getHabits():Habit[]{
@@ -20,7 +20,6 @@ export function addHabit(name:string):Habit{
 export function deleteHabit(id:string){
   const data=getData();
   data.habits=data.habits.filter(h=>h.id!==id);
-  data.logs=data.logs.filter(l=>l.habitId!==id);
   saveData(data);
 }
 

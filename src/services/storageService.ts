@@ -1,16 +1,14 @@
 import type { Habit } from "../models/habbitModel";
-import type { HabitLog } from "../models/logModel";
 
 type StorageData={
     habits:Habit[];
-    logs:HabitLog[]
 };
 
 const KEY="habit-tracker";
 
 export function getData():StorageData{
     const raw=localStorage.getItem(KEY);
-    if(!raw) return {habits:[],logs:[]};
+    if(!raw) return {habits:[]};
     return JSON.parse(raw);
 }
 
